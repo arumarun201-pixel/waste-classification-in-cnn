@@ -1,0 +1,9 @@
+dataset/
+*.keras
+*.png
+train.py
+evaluate.py
+predict.py
+convert_to_onnx.py
+requirements-train.txt
+__pycache__/
