@@ -52,12 +52,16 @@ def predict_waste(file_bytes):
     }
 
 
-@app.route("/")
-def home():
+# Catch-all: Vercel rewrites every URL to this function,
+# so Flask must serve the page for any path.
+@app.route("/", defaults={"path": ""})
+@app.route("/<path:path>")
+def home(path):
     return render_template("index.html")
 
 
 @app.route("/api/predict", methods=["POST"])
+@app.route("/api/index", methods=["POST"])
 def predict():
     file = request.files.get("file")
     if file is None or file.filename == "":
